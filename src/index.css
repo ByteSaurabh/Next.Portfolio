@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Cyberpunk Design System - All colors in HSL */
+
+@layer base {
+  :root {
+    /* Base cosmic theme */
+    --background: 222 47% 6%;
+    --foreground: 180 100% 95%;
+
+    /* Glass morphic cards */
+    --card: 222 47% 8%;
+    --card-foreground: 180 100% 95%;
+    --glass: 222 47% 10%;
+    --glass-border: 180 50% 50%;
+
+    /* Popover elements */
+    --popover: 222 47% 8%;
+    --popover-foreground: 180 100% 95%;
+
+    /* Neon primary (cyber cyan) */
+    --primary: 180 100% 50%;
+    --primary-foreground: 222 47% 6%;
+    --primary-glow: 180 100% 70%;
+
+    /* Electric purple secondary */
+    --secondary: 280 100% 70%;
+    --secondary-foreground: 222 47% 6%;
+    --secondary-glow: 280 100% 85%;
+
+    /* Hot pink accent */
+    --accent: 320 100% 65%;
+    --accent-foreground: 222 47% 6%;
+    --accent-glow: 320 100% 80%;
+
+    /* Muted cosmic colors */
+    --muted: 222 47% 12%;
+    --muted-foreground: 180 30% 70%;
+
+    /* Destructive neon red */
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 222 47% 6%;
+
+    /* Borders and inputs with neon glow */
+    --border: 180 50% 25%;
+    --input: 222 47% 10%;
+    --ring: 180 100% 50%;
+
+    /* Gradient definitions */
+    --gradient-cosmic: linear-gradient(135deg, hsl(222 47% 6%), hsl(260 47% 8%), hsl(222 47% 6%));
+    --gradient-neon: linear-gradient(135deg, hsl(180 100% 50%), hsl(280 100% 70%), hsl(320 100% 65%));
+    --gradient-glass: linear-gradient(135deg, hsla(180 50% 50% / 0.1), hsla(280 50% 50% / 0.05));
+    
+    /* Shadows and glows */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-glass: 0 8px 32px hsla(0 0% 0% / 0.3);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* Futuristic Utility Classes */
+@layer components {
+  .glass-card {
+    @apply bg-gradient-to-br from-glass/20 to-glass/5 backdrop-blur-xl border border-glass-border/30 rounded-xl;
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+  
+  .neon-border {
+    @apply border border-primary/50;
+    box-shadow: inset 0 0 20px hsl(var(--primary) / 0.1), 0 0 20px hsl(var(--primary) / 0.2);
+  }
+  
+  .gradient-text {
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .cosmic-bg {
+    background: var(--gradient-cosmic);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground cosmic-bg;
+  }
+  
+  /* Custom animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(-5px) rotate(-1deg); }
+  }
+  
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 5px hsl(var(--primary) / 0.5); }
+    100% { box-shadow: 0 0 25px hsl(var(--primary) / 0.8); }
+  }
+}
